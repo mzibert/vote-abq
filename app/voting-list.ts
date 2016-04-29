@@ -1,15 +1,18 @@
 import {Component, OnInit} from "angular2/core";
 import {VotingService} from "./voting.service";
 import {Voting} from "./voting";
+import {ANGULAR2_GOOGLE_MAPS_DIRECTIVES} from "angular2-google-maps/core";
 
 @Component({
 	selector: "voting-list",
-	templateUrl: "app/templates/voting-list.html"
+	templateUrl: "app/templates/voting-list.html",
+	directives: [ANGULAR2_GOOGLE_MAPS_DIRECTIVES]
 })
 
 export class VotingList implements OnInit {
 	constructor(private votingService: VotingService) {}
 
+	votingMap = {};
 	errorMessage: string;
 	votingList: Voting[];
 	votingCenter = {};
@@ -39,6 +42,6 @@ export class VotingList implements OnInit {
 		});
 		votingLat = votingLat / this.votingList.length;
 		votingLong = votingLong / this.votingList.length;
-		this.votingCenter = {lat: votingLat, long: votingLong};
+		this.votingCenter = {lat: votingLat, lng: votingLong};
 	}
 }

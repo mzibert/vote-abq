@@ -2,6 +2,10 @@
 	<head>
 		<title>Vote ABQ!</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- 1. Google Maps -->
+		<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6UVoi1lwFM9wcX91_LFZPpzJ_ZFIiPMg"></script>-->
+
 		<!-- 0. Load libraries -->
 		<!-- IE required polyfills, in this exact order -->
 		<script src="node_modules/es6-shim/es6-shim.min.js"></script>
@@ -12,9 +16,11 @@
 		<script src="node_modules/rxjs/bundles/Rx.js"></script>
 		<script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 		<script src="node_modules/angular2/bundles/http.dev.js"></script>
+		<script src="node_modules/angular2-google-maps/bundles/angular2-google-maps.js"></script>
 
 		<!-- 1. Bootstrap and Styles -->
 		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="abq-vote.css" />
 
 		<!-- 2. Configure SystemJS -->
 		<script>
@@ -23,7 +29,13 @@
 					app: {
 						format: 'register',
 						defaultExtension: 'js'
+					},
+					'node_modules/angular2-google-maps': {
+						defaultExtension: 'js'
 					}
+				},
+				map: {
+					'angular2-google-maps': 'node_modules/angular2-google-maps'
 				}
 			});
 			System.import('app/main')
