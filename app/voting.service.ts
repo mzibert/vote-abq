@@ -24,7 +24,7 @@ export class VotingService {
 		let body = response.json();
 		body.features.forEach(function(item) {
 			let attributes = item.attributes;
-			let voting = new Voting(attributes.OBJECTID, attributes.name, attributes.ZIP, attributes.locationDescription, attributes.Lat, attributes.Long);
+			let voting = {id: attributes.OBJECTID, name: attributes.name, zip: attributes.ZIP, description: attributes.locationDescription, lat: attributes.Lat, long: attributes.Long};
 			reply.push(voting);
 		});
 		return(reply);
