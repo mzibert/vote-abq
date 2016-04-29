@@ -1,0 +1,13 @@
+<h2>Voting Locations</h2>
+<table>
+	<tr><th>Id</th><th>Name</th><th>Address</th><th>ZIP</th><th>Description</th><th>Latitude</th><th>Latitude</th></tr>
+	<tr *ngFor="#voting of votingList">
+		<td>{{ voting.id }}</td>
+		<td>{{ voting.name }}</td>
+		<td>{{ voting.address }}</td>
+		<td>{{ voting.zip }}</td>
+		<td>{{ voting.description }}</td>
+		<td>{{ voting.lat }}</td>
+		<td>{{ voting.long }}</td>
+	</tr>
+</table>
