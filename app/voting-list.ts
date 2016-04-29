@@ -12,6 +12,7 @@ export class VotingList implements OnInit {
 
 	errorMessage: string;
 	votingList: Voting[];
+	votingCenter = {};
 
 	ngOnInit() {
 		this.getVoting();
@@ -20,7 +21,19 @@ export class VotingList implements OnInit {
 	getVoting() {
 		this.votingService.getVoting()
 			.subscribe(
-				voting => this.votingList = voting,
+				voting => {
+					this.votingList = voting;
+					let votingLat = 0.0;
+					let votingLong = 0.0;
+
+					this.votingList.forEach(function(voting) {
+						votingLat = votingLat + voting.lat;
+						votingLong = votingLong + voting.long;
+					});
+					votingLat = votingLat / this.votingList.length;
+					votingLong = votingLong / this.votingList.length;
+					this.votingCenter = {lat: votingLat, long: votingLong};
+				},
 				error => this.errorMessage = error
 			);
 	}
