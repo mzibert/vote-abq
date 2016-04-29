@@ -23,18 +23,22 @@ export class VotingList implements OnInit {
 			.subscribe(
 				voting => {
 					this.votingList = voting;
-					let votingLat = 0.0;
-					let votingLong = 0.0;
-
-					this.votingList.forEach(function(voting) {
-						votingLat = votingLat + voting.lat;
-						votingLong = votingLong + voting.long;
-					});
-					votingLat = votingLat / this.votingList.length;
-					votingLong = votingLong / this.votingList.length;
-					this.votingCenter = {lat: votingLat, long: votingLong};
+					this.calculateCenter();
 				},
 				error => this.errorMessage = error
 			);
+	}
+
+	calculateCenter() {
+		let votingLat = 0.0;
+		let votingLong = 0.0;
+
+		this.votingList.forEach(function(voting) {
+			votingLat = votingLat + voting.lat;
+			votingLong = votingLong + voting.long;
+		});
+		votingLat = votingLat / this.votingList.length;
+		votingLong = votingLong / this.votingList.length;
+		this.votingCenter = {lat: votingLat, long: votingLong};
 	}
 }
