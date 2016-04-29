@@ -20,9 +20,14 @@ export class VotingService {
 			throw(new Error("Bad response status: " + response.status));
 		}
 
+		let reply = [];
 		let body = response.json();
-		console.log(body);
-		return(body);
+		body.features.forEach(function(item) {
+			let attributes = item.attributes;
+			let voting = new Voting(attributes.OBJECTID, attributes.name, attributes.ZIP, attributes.locationDescription, attributes.Lat, attributes.Long);
+			reply.push(voting);
+		});
+		return(reply);
 	}
 
 	private handleError(error: any) {
