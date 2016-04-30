@@ -16,6 +16,7 @@ export class VotingList implements OnInit {
 	errorMessage: string;
 	votingList: Voting[];
 	votingCenter = {};
+	zoom :number = 12;
 
 	ngOnInit() {
 		this.getVoting();

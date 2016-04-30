@@ -3,7 +3,7 @@
 	<sebm-google-map
 		[latitude]="votingCenter.lat"
 		[longitude]="votingCenter.lng"
-		[zoom]="10">
+		[zoom]="zoom">
 		<sebm-google-map-marker
 			*ngFor="let voting of votingList"
 			[latitude]="voting.lat"
