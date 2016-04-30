@@ -7,7 +7,7 @@ import {Voting} from "./voting";
 export class VotingService {
 	constructor(private http: Http) {}
 
-	private votingUrl = "http://coagisweb.cabq.gov/arcgis/rest/services/public/Voting2015/MapServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&f=json";
+	private votingUrl = "https://bootcamp-coders.cnm.edu/~dmcdonald21/vote-abq-api/";
 
 	getVoting() : Observable<Voting[]> {
 		return(this.http.get(this.votingUrl)
